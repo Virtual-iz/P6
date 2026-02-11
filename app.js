@@ -1,15 +1,19 @@
 /*Imports*/
 const express = require('express'); /*à installer dans le package.json pour chaque projet*/
-const bodyParser = require ('body-parser')
-const mongoose = require ("mongoose"); /*pour faciliter les interactions avec la database MongoDB avec schémas de données, lecture et écriture directe*/
+const bodyParser = require('body-parser')
+const mongoose = require("mongoose"); /*pour faciliter les interactions avec la database MongoDB avec schémas de données, lecture et écriture directe*/
+const path = require('path'); /*pour gérer les chemins de fichiers et de dossiers*/
+// Copy the .env.example in the root into a .env file in this folder
+const envFilePath = path.resolve(__dirname, `.env`);
+const env = require("dotenv").config({ path: envFilePath });
 
 const biblioRoutes = require('./routes/biblio');
 const userRoutes = require('./routes/user')
-const path = require('path');
+
 
 /*Connexion au cluster de la database NoSQL MongoDB*/
 
-mongoose.connect('mongodb+srv://AdminIZ:AdminIZmp2026@grimoires.wfzh0xe.mongodb.net/?appName=Grimoires?retryWrites=true&w=majority')
+mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch((err) => console.error('Erreur de connexion :', err));
 
