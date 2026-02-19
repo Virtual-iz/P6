@@ -7,10 +7,13 @@ const multer = require('../middleware/multer-config');
 
 /*Renvoie un tableau de tous les livres de la base de données.*/
 router.get('/', booksCtrl.getAllBooks);
+
+/*Renvoie un tableau des 3 livres de la base de données ayant la meilleure note moyenne. A PLACER AVANT ID SINON CONFLIT */
+router.get('/bestrating', booksCtrl.getBestRating);
+
 /*Renvoie le livre avec l’_id fourni.*/
 router.get('/:id', booksCtrl.getOneBook);
-/*Renvoie un tableau des 3 livres de la base de données ayant la meilleure note moyenne.*/
-router.get('/bestrating', booksCtrl.getBestRating);
+
 
 
 /*Capture et enregistre l'image, analyse le livre, transformé en chaîne de caractères, et l'enregistre dans la base de données en déﬁnissant correctement son ImageUrl.

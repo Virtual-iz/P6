@@ -22,7 +22,6 @@ exports.getBestRating = (req, res, next) => {
     });
 };
 
-
 exports.createBook = (req, res, next) => {
   const bookObject = JSON.parse(req.body.book);
   delete bookObject._id;
