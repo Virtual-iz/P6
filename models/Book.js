@@ -19,7 +19,7 @@ const bookSchema = mongoose.Schema({
     /* identiﬁant MongoDB unique de l'utilisateur qui a noté le livre*/
     userId: { type: String, required: true },
     /* note donnée à un livre*/
-    grade: { type: Number, required: true }
+    grade: { type: Number, required: true, min: 0, max: 5 },
     }
   ],
   /* notes attribuées à un livre*/

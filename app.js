@@ -1,23 +1,20 @@
 /*Imports*/
-const express = require('express'); /*à installer dans le package.json pour chaque projet*/
-const bodyParser = require('body-parser')
+const express = require('express'); /*à installer dans le package.json pour chaque projet body-parser n'est plus necessaire car express le prend en charge*/
 const mongoose = require("mongoose"); /*pour faciliter les interactions avec la database MongoDB avec schémas de données, lecture et écriture directe*/
 const path = require('path'); /*pour gérer les chemins de fichiers et de dossiers*/
+
 // Copy the .env.example in the root into a .env file in this folder
 const envFilePath = path.resolve(__dirname, `.env`);
 const env = require("dotenv").config({ path: envFilePath });
 
-const biblioRoutes = require('./routes/biblio');
+const booksRoutes = require('./routes/books');
 const userRoutes = require('./routes/user')
 
-
-/*Connexion au cluster de la database NoSQL MongoDB*/
-
-mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.CONNECTION_STRING)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch((err) => console.error('Erreur de connexion :', err));
 
-/* utilisation du framework node express pour les fonctions middleware*/
+/* framework node express pour les fonctions middleware*/
 const app = express();
 
 /*Cross Origin Resource Sharing CORS pour autoriser des serveurs différents à communiquer*/
@@ -29,12 +26,11 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-/*app.use(bodyParser.json());*/
 
-/*enregistrement du début de routes communs pour les routes déplacées dans stuff.js */
-app.use('/api/biblio', biblioRoutes);
+/*enregistrement du début de routes communs */
+app.use('/api/books', booksRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-/* Expost de la constante app pour pouvoir y acceder depuis d'autres fichiers */
+/* Export de la constante app pour pouvoir y acceder depuis d'autres fichiers */
 module.exports = app;
