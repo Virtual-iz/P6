@@ -7,8 +7,8 @@ const path = require('path'); /*pour gérer les chemins de fichiers et de dossie
 const envFilePath = path.resolve(__dirname, `.env`);
 const env = require("dotenv").config({ path: envFilePath });
 
-const booksRoutes = require('./routes/books');
-const userRoutes = require('./routes/user')
+const booksRoutes = require('./routes/books-routes');
+const userRoutes = require('./routes/user-routes')
 
 mongoose.connect(process.env.CONNECTION_STRING)
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -27,10 +27,10 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-/*enregistrement du début de routes communs */
+/*début de routes communs */
 app.use('/api/books', booksRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-/* Export de la constante app pour pouvoir y acceder depuis d'autres fichiers */
+/* Export pour l'accès depuis d'autres fichiers */
 module.exports = app;
