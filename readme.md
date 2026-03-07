@@ -23,15 +23,14 @@ Un bouton de validation permet de conﬁrmer la création du
 livre une fois toutes les informations saisies.
 Cette page n'est pas visible hors connexion.
 
+-------------
 - Le header contient le logo et un menu avec les liens accueil, créer un livre, se connection/déconnection (qui permet aussi l'inscription)
 - le footer contient l’adresse, le numéro de téléphone, un
 visuel d’une carte, ainsi que le copyright.
-
+-------------
 
 
 ### Généralités de l'API
-
-Accès API : http://localhost:3000
 
 ▶️ Base de donnée MongoDB + Mongoose
 - Mongoose pour garantir que les adresses electroniques utilisateurs sont uniques et signaler les erreurs
@@ -127,37 +126,6 @@ backend/
     Supprime un livre (auth requise)
 
 
-
-###### Models pour un livre et un utilisateur
-
-    User {
-        email : String     - mail de l’utilisateur [unique]
-        password : String     - mot de passe haché 
-    }
-
-    Book {
-        userId : String     
-        -> identiﬁant MongoDB unique de l'utilisateur qui a créé 
-
-        title : String     
-        author : String     
-        imageUrl : String     
-        -> illustration du livre
-        year: Number    
-        - année de publication du livre
-        genre: String    
-        -> genre du livre
-
-            ratings : [
-            {
-                userId : String     - identiﬁant MongoDB unique de l'utilisateur qui a noté le livre
-                grade : Number     - note donnée à un livre
-            }
-        ] - notes données à un livre
-        averageRating : Number     - note moyenne du livre
-    }
-
-
 ###### Installation
 
 ▶️ Cloner le projet avec
@@ -177,9 +145,10 @@ npm install multer -> stockage local des images
 npm install sharp -> convertion des images en .webp, plus léger
 
 ▶️ Créer un fichier .env à la racine contenant les informations communiquées :
-CONNECTION_STRING=<connection_mongodb>
+CONNECTION_STRING=<connection_db>
 PORT=4000
 JWT_SECRET=<votre_secret>
+
 
 ▶️ Lancer le serveur : npm run start
 

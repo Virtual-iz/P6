@@ -1,9 +1,9 @@
 /*Imports*/
-const express = require('express'); /*à installer dans le package.json pour chaque projet body-parser n'est plus necessaire car express le prend en charge*/
-const mongoose = require("mongoose"); /*pour faciliter les interactions avec la database MongoDB avec schémas de données, lecture et écriture directe*/
+const express = require('express'); /*body-parser n'est plus necessaire car express le prend en charge*/
+const mongoose = require("mongoose"); /*facilite les interactions avec la database MongoDB avec schémas de données, lecture et écriture directe*/
 const path = require('path'); /*pour gérer les chemins de fichiers et de dossiers*/
 
-// Copy the .env.example in the root into a .env file in this folder
+// Copy the .env file in this folder
 const envFilePath = path.resolve(__dirname, `.env`);
 const env = require("dotenv").config({ path: envFilePath });
 
