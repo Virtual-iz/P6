@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require ('../models/User');
 
-
+/*mp cryptés avec bcrypt- hashage 10*/
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -19,16 +19,19 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
+    /*vérification que le user existe*/
    User.findOne({ email: req.body.email })
        .then(user => {
            if (!user) {
                return res.status(401).json({ message: 'Paire login/mot de passe incorrecte'});
            }
+           /*Correspondance avec mp bcrypt*/
            bcrypt.compare(req.body.password, user.password)
                .then(valid => {
                    if (!valid) {
                        return res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
                    }
+                   /*Si ok, création token JWT sécurisé qui contient l'id utilisateur, stockée dans variable env, expiration 24h*/
                    res.status(200).json({
                        userId: user._id,
                        token: jwt.sign(

@@ -10,7 +10,7 @@ exports.getAllBooks = (req, res, next) => {
         res.status(400).json({ error: error });});
 };
 
-/*Renvoie un tableau des 3 livres avec la meilleure note moyenne. A PLACER AVANT ID coté routes SINON CONFLIT */
+/*Renvoie un tableau des 3 livres avec la meilleure note moyenne. AVANT ID coté routes */
 exports.getBestRating = (req, res, next) => {
   Book.find()
     .sort({ averageRating: -1 }) // Trie par note décroissante
@@ -48,7 +48,7 @@ exports.getOneBook = (req, res, next) => {
     .catch((error) => { res.status(404).json({ error: error }); }); 
 };
 
-/* Instructions cours : Si un ﬁchier est fourni, le livre transformé en chaîne de caractères se trouve dans req.body.book. 
+/* Si un ﬁchier est fourni, le livre transformé en chaîne de caractères se trouve dans req.body.book. 
 Le corps de la demande initiale est vide ; lorsque Multer est ajouté, il renvoie une chaîne du corps de la demande basée sur les données soumises avec le ﬁchier.
 Corps de requete : EITHER Book as JSON OR { book: string, image: ﬁle }
 Réponse attendue { message: string }*/

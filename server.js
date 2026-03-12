@@ -1,4 +1,4 @@
-const http = require('http'); /*import du package integré de base dans node*/
+const http = require('http'); /*import du package natif de Node pour créer le serveur et gérer les erreurs système*/
 const app = require('./app');
 
 const normalizePort = val => {

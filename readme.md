@@ -1,22 +1,21 @@
 # Mon Vieux Grimoire – API Backend
 
 API REST Node.js / Express pour gérer une collection de livres. 
-L’objectif du site “Mon Vieux Grimoire” est de donner la
-possibilité aux lecteurs de créer des livres, de les noter et de consulter les livres existants ainsi que leurs notes.
+L’objectif du site “Mon Vieux Grimoire” est de donner la possibilité aux lecteurs de créer des livres, de les noter et de consulter les livres existants ainsi que leurs notes.
 
+-------------
 
 ## Spécifications techniques
 
-4 pages :
+- Le header contient un menu avec un bouton connection/déconnection (qui permet aussi l'inscription)
 
 ● une page pour permettre l’inscription / la connexion des utilisateurs. Cette page contient deux champs de saisie : “mail” et “mot de passe”, et deux boutons :“inscription” et “connexion”. Pas de header ni footer sur cette page.
 
 ● une page d’accueil présentant la liste de l’ensemble des ouvrages ayant été ajoutés par les utilisateurs. Cette page est visible par tous les visiteurs, qu’ils soient connectés ou non. Pour chaque ouvrage doivent apparaître son image et son titre.
 
-● une page “livre” présentant toutes les informations rattachées à un livre : image, titre, auteur, année, genre et note moyenne sur 5. Le créateur met une première note, et un utilisateur non créateur doit avoir la possibilité de rajouter sa propre note. L'app fait une moyenne de toutes les notes utilisateurs.
-Si l’utilisateur qui consulte un livre est le créateur de
-celui-ci, cet utilisateur aura 2 boutons supplémentaires à
-sa disposition, un bouton pour supprimer le livre, et un autre pour le modiﬁer.
+● une page “livre” présentant toutes les informations rattachées à un livre : image, titre, auteur, année, genre et note moyenne sur 5. 
+Le créateur met une première note, et un utilisateur non créateur doit avoir la possibilité de rajouter sa propre note. L'app fait une moyenne de toutes les notes utilisateurs.
+Si l’utilisateur qui consulte un livre est le créateur de celui-ci, cet utilisateur aura 2 boutons supplémentaires à sa disposition, un bouton pour supprimer le livre, et un autre pour le modiﬁer.
 
 ● une page permettant aux utilisateurs d’ajouter de nouveaux livres à la plateforme en lui renseignant toutes les informations nécessaires : image (champ d’upload d’une image), titre, auteur, année et genre.
 Un bouton de validation permet de conﬁrmer la création du
@@ -24,11 +23,6 @@ livre une fois toutes les informations saisies.
 Cette page n'est pas visible hors connexion.
 
 -------------
-- Le header contient le logo et un menu avec les liens accueil, créer un livre, se connection/déconnection (qui permet aussi l'inscription)
-- le footer contient l’adresse, le numéro de téléphone, un
-visuel d’une carte, ainsi que le copyright.
--------------
-
 
 ### Généralités de l'API
 
@@ -50,11 +44,9 @@ Création, lecture, modification et suppression des livres, avec contrôle de pr
 ▶️ Système de notation / rating sécurisé
 Chaque utilisateur peut noter un livre une seule fois, et la note moyenne est recalculée côté serveur pour éviter toute triche.
 
-
+-------------
 
 #### Structure du projet
-
-Architecture MVC (Modèle – Vue – Contrôleur)
 
 backend/
 │
@@ -79,6 +71,7 @@ backend/
 ├── app.js                 # Configuration Express et MongoDB
 └── server.js              # Création du serveur Node
 
+-------------
 
 ##### Routes et usages
 
@@ -125,6 +118,7 @@ backend/
 ▶️ DELETE/api/books/:id	
     Supprime un livre (auth requise)
 
+-------------
 
 ###### Installation
 
