@@ -11,7 +11,7 @@ L’objectif du site “Mon Vieux Grimoire” est de donner la possibilité aux 
 
 ● une page pour permettre l’inscription / la connexion des utilisateurs. Cette page contient deux champs de saisie : “mail” et “mot de passe”, et deux boutons :“inscription” et “connexion”. Pas de header ni footer sur cette page.
 
-● une page d’accueil présentant la liste de l’ensemble des ouvrages ayant été ajoutés par les utilisateurs. Cette page est visible par tous les visiteurs, qu’ils soient connectés ou non. Pour chaque ouvrage doivent apparaître son image et son titre.
+● une page d’accueil présentant la liste de l’ensemble des ouvrages ayant été ajoutés par les utilisateurs. Cette page est visible par tous les visiteurs, qu’ils soient connectés ou non. Pour chaque ouvrage apparaissent son image et son titre.
 
 ● une page “livre” présentant toutes les informations rattachées à un livre : image, titre, auteur, année, genre et note moyenne sur 5. 
 Le créateur met une première note, et un utilisateur non créateur doit avoir la possibilité de rajouter sa propre note. L'app fait une moyenne de toutes les notes utilisateurs.

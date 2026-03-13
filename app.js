@@ -18,7 +18,7 @@ mongoose.connect(process.env.CONNECTION_STRING)
 /* framework node express pour les fonctions middleware*/
 const app = express();
 
-/*Cross Origin Resource Sharing CORS pour autoriser des requêtes depuis un front end d'autre origine*/
+/*Cross Origin Resource Sharing CORS pour autoriser des requêtes http depuis un front end d'autre origine*/
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');

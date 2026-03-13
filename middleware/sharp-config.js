@@ -11,13 +11,10 @@ module.exports = async (req, res, next) => {
     // On utilise le chemin enregistré par Multer
     const inputPath = req.file.path;
 
-    // Multer enregistre le fichier SANS extension, donc on ajoute directement l'extension .webp 
+    // Multer enregistre le fichier sans extension, donc on ajoute directement l'extension .webp 
     const outputPath = inputPath + '.webp';
 
-    /* Sharp lit le fichier original
-    puis le convertit en WebP 
-    et enregistre le nouveau fichier au chemin défini dans outputPath 
-    */
+    /* Sharp convertit en WebP et enregistre le nouveau fichier au chemin défini*/
     await sharp(inputPath)
       .webp({ quality: 80 })
       .toFile(outputPath);

@@ -139,7 +139,8 @@ exports.createRating = (req, res, next) => {
       book.ratings.push({ userId, grade: rating });
       // Recalcul de la moyenne
       const totalRatings = book.ratings.reduce((sum, r) => sum + r.grade, 0);
-      book.averageRating = totalRatings / book.ratings.length;
+      const average = totalRatings / book.ratings.length;
+      book.averageRating = parseFloat(average.toFixed(1));
       // Utilisation de async/await , avec gestion d'erreur locale
       (async () => {
         try {
