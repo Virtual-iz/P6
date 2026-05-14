@@ -16,6 +16,13 @@ module.exports = async (req, res, next) => {
 
     /* Sharp convertit en WebP et enregistre le nouveau fichier au chemin défini*/
     await sharp(inputPath)
+      .rotate() 
+      .resize({
+        width: 260, //propriété bookimage css
+        //height: 206, avec width conserve proportion auto, sinon recadre
+        //fit: 'inside', normalement déjà géré par contain coté front
+        //withoutEnlargement: true pour préserver la qualité si l'image est plus petite (si besoin)
+      })
       .webp({ quality: 80 })
       .toFile(outputPath);
 
